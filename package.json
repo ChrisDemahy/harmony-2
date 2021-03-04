@@ -1,0 +1,14 @@
+{
+  "name": "harmony-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "workspaces": [
+    "backend",
+    "front-end"
+  ],
+  "private": true,
+  "scripts": {
+    "deploybackend": "git subtree push --prefix backend heroku main"
+  }
+}

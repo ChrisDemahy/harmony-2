@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "dependencies": {
+    "@useoptic/cli": "^8.6.2",
+    "cross-env": "5.0.5",
+    "front-end": "1.0.0"
+  },
+  "scripts": {
+    "start": "rails s",
+    "test": "rails test"
+  }
+}
