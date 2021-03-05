@@ -1,10 +1,14 @@
 // src/store/system/reducers.ts
 
-import { SystemState, SystemActionTypes, UPDATE_SESSION } from "./types";
+import {
+  SystemState,
+  SystemActionTypes,
+  UPDATE_USERNAME,
+  UPDATE_LOGIN,
+} from "./types";
 
 const initialState: SystemState = {
   loggedIn: false,
-  session: "",
   userName: "",
 };
 
@@ -13,10 +17,16 @@ export function systemReducer(
   action: SystemActionTypes
 ): SystemState {
   switch (action.type) {
-    case UPDATE_SESSION: {
+    case UPDATE_USERNAME: {
       return {
         ...state,
-        ...action.payload,
+        userName: action.payload,
+      };
+    }
+    case UPDATE_LOGIN: {
+      return {
+        ...state,
+        loggedIn: action.payload,
       };
     }
     default:

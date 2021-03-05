@@ -2,16 +2,20 @@
 
 export interface SystemState {
   loggedIn: boolean;
-  session: string;
   userName: string;
 }
 
 // Chat Action Constants & Shape:
-export const UPDATE_SESSION = "UPDATE_SESSION";
+export const UPDATE_USERNAME = "UPDATE_USERNAME";
+export const UPDATE_LOGIN = "UPDATE_LOGIN";
 
-interface UpdateSessionAction {
-  type: typeof UPDATE_SESSION;
-  payload: SystemState;
+interface UpdateUsernameAction {
+  type: typeof UPDATE_USERNAME;
+  payload: string;
+}
+interface UpdateLoginAction {
+  type: typeof UPDATE_LOGIN;
+  payload: boolean;
 }
 
-export type SystemActionTypes = UpdateSessionAction;
+export type SystemActionTypes = UpdateUsernameAction | UpdateLoginAction;
