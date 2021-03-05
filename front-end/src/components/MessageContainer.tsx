@@ -1,6 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../store";
+import { updateMessages } from "../store/chat/actions";
 
 const MessageContainer = () => {
+  const messages = useTypedSelector((state) => state.chat.messages);
+  console.log(messages);
+
+  const dispatch = useDispatch();
+
   return (
     <div className="container column is-10">
       <div className="section">
@@ -19,7 +27,21 @@ const MessageContainer = () => {
             <p className="card-header-title">Header</p>
           </div>
           <div className="card-content">
-            <div className="content">Content</div>
+            <div className="content">
+              {" "}
+              <button
+                onClick={() =>
+                  dispatch(
+                    updateMessages([
+                      { id: 3, content: "hello", user_id: 3, chatroom_id: 4 },
+                    ])
+                  )
+                }
+                className="button"
+              >
+                Click Me!
+              </button>
+            </div>
           </div>
         </div>
         <br />
