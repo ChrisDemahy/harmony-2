@@ -1,4 +1,12 @@
-import { SocketState } from "./types";
+import {
+  SocketActionTypes,
+  SocketState,
+  SOCKET_CONNECTION_CLOSED,
+  SOCKET_CONNECTION_ERROR,
+  SOCKET_CONNECTION_INIT,
+  SOCKET_CONNECTION_SUCCESS,
+  SOCKET_MESSAGE,
+} from "./types";
 
 const initialState: SocketState = {
   connected: false,
@@ -8,35 +16,40 @@ const initialState: SocketState = {
 
 export function chatReducer(
   state = initialState,
-  action: ChatActionTypes
+  action: SocketActionTypes
 ): SocketState {
   switch (action.type) {
     // User sends a message
-    case NEW_MESSAGE:
+    case SOCKET_CONNECTION_INIT:
       return {
         ...state,
-        messages: [...state.messages, action.payload],
+        connected: false,
+        socket: action.socket, // TODO action.socket????
       };
     // User Deletes a message
-    case DELETE_MESSAGE:
+    case SOCKET_CONNECTION_SUCCESS:
       return {
         ...state,
-        messages: state.messages.filter(
-          (message) => message.id !== action.payload.id
-        ),
+        connected: true,
       };
     //
-    case UPDATE_MESSAGES:
+    case SOCKET_CONNECTION_ERROR:
       // Replaces all messages
       return {
         ...state,
-        messages: [...action.payload],
+        connected: false,
       };
-    case UPDATE_CHATROOM:
+    case SOCKET_CONNECTION_CLOSED:
       // Replaces all messages
       return {
         ...state,
-        ...action.payload,
+        connected: false,
+        socket: null,
+      };
+    case SOCKET_MESSAGE:
+      // Replaces all messages
+      return {
+        ...state,
       };
     default:
       return state;

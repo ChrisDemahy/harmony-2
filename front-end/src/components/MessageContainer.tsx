@@ -2,12 +2,15 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../store";
 import { updateMessages } from "../store/chat/actions";
+import { thunkInitSocket } from "../thunk";
 
 const MessageContainer = () => {
   const messages = useTypedSelector((state) => state.chat.messages);
   console.log(messages);
 
   const dispatch = useDispatch();
+
+  dispatch(thunkInitSocket());
 
   return (
     <div className="container column is-10">

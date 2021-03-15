@@ -18,28 +18,30 @@ export const SOCKET_MESSAGE = "SOCKET_MESSAGE";
 // Initiate Socket Connection
 interface SocketInitAction {
   type: typeof SOCKET_CONNECTION_INIT;
+  // payload: SocketState;
+  socket: any;
 }
 // Socket connection is successful
 interface SocketSuccessAction {
   type: typeof SOCKET_CONNECTION_SUCCESS;
-  payload: SocketState;
+  // payload: SocketState;
 }
 // Socket connection has an error
 interface SocketErrorAction {
   type: typeof SOCKET_CONNECTION_ERROR;
-  payload: SocketState;
+  // payload: SocketState;
 }
 
 // Socket connection is closed
 interface SocketClosedAction {
   type: typeof SOCKET_CONNECTION_CLOSED;
-  payload: SocketState;
+  // payload: SocketState;
 }
 
 // Socket connection is closed
 interface SocketMessageAction {
   type: typeof SOCKET_MESSAGE;
-  payload: SocketState;
+  payload: any;
 }
 
 // Typescript union type to express all actions

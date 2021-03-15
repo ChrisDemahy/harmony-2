@@ -9,40 +9,42 @@ import {
 } from "./types";
 
 // TypeScript infers that this function is returning SocketInitAction
-export function initSocket(): SocketActionTypes {
+export function initSocket(socket: any): SocketActionTypes {
   return {
     type: SOCKET_CONNECTION_INIT,
+    // payload: previousState,
+    socket: socket,
   };
 }
 
 // TypeScript infers that this function is returning SocketSuccessAction
-export function socketSuccess(previousState: SocketState): SocketActionTypes {
+export function socketSuccess(): SocketActionTypes {
   return {
     type: SOCKET_CONNECTION_SUCCESS,
-    payload: previousState,
+    // payload: previousState,
   };
 }
 
 // TypeScript infers that this function is returning SocketErrorAction
-export function socketError(previousState: SocketState): SocketActionTypes {
+export function socketError(): SocketActionTypes {
   return {
     type: SOCKET_CONNECTION_ERROR,
-    payload: previousState,
+    // payload: previousState,
   };
 }
 
 // TypeScript infers that this function is returning SocketClosedAction
-export function socketClosed(previousState: SocketState): SocketActionTypes {
+export function socketClosed(): SocketActionTypes {
   return {
     type: SOCKET_CONNECTION_CLOSED,
-    payload: previousState,
+    // payload: previousState,
   };
 }
 
 // TypeScript infers that this function is returning SocketMessageAction
-export function socketMessage(previousState: SocketState): SocketActionTypes {
+export function socketMessage(message: any): SocketActionTypes {
   return {
     type: SOCKET_MESSAGE,
-    payload: previousState,
+    payload: message,
   };
 }
