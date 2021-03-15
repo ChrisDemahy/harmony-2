@@ -18,11 +18,13 @@ export const thunkInitSocket = (): ThunkAction<
   unknown,
   Action<string>
 > => async (dispatch) => {
-  const socket = new WebSocket("ws://foo.com");
+  console.log("Starting socket connection....");
+  const socket = new WebSocket("ws://localhost:3000/cable");
   dispatch(initSocket(socket));
 
   socket.onopen = function () {
     dispatch(socketSuccess());
+    // dispatch(thunkSubscribeSocket());
   };
 
   socket.onerror = function () {
@@ -36,4 +38,18 @@ export const thunkInitSocket = (): ThunkAction<
   socket.onclose = function () {
     dispatch(socketClosed());
   };
+};
+
+export const thunkSubscribeSocket = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  Action<string>
+> => async (dispatch, getState) => {
+  const { socket } = getState(); //get socket
+  const message = {
+    command: "subscribe",
+    indentifier: JSON.stringify({ channel: "ChatChannel" }),
+  };
+  socket.socket.send(JSON.stringify(message));
 };

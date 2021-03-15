@@ -14,7 +14,7 @@ const initialState: SocketState = {
   socket: null,
 };
 
-export function chatReducer(
+export function socketReducer(
   state = initialState,
   action: SocketActionTypes
 ): SocketState {

@@ -7,10 +7,12 @@ import { useSelector, TypedUseSelectorHook } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { applyMiddleware } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
+import { socketReducer } from "./socket/reducers";
 
 const rootReducer = combineReducers({
   system: systemReducer,
   chat: chatReducer,
+  socket: socketReducer,
 });
 
 export const store = createStore(

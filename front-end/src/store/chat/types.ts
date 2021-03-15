@@ -18,10 +18,8 @@ export interface ChatroomDetails {
 
 export interface ChatState {
   messages: Message[];
-  id: number;
-  name: string;
-  created_at: string;
-  updated_at: string;
+  chatRooms: ChatroomDetails[];
+  currentChatroom: ChatroomDetails;
 }
 // Chat Action Constants & Shape:
 
