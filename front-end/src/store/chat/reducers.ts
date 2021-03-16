@@ -5,16 +5,15 @@ import {
   ChatActionTypes,
   NEW_MESSAGE,
   DELETE_MESSAGE,
-  UPDATE_MESSAGES,
+  SET_MESSAGES,
   UPDATE_CHATROOM,
+  SET_CHATROOMS,
 } from "./types";
 
 const initialState: ChatState = {
   messages: [],
-  id: 0,
-  name: "",
-  created_at: "",
-  updated_at: "",
+  chatRooms: [],
+  currentChatroom: { id: 0, name: "", created_at: "", updated_at: "" },
 };
 
 export function chatReducer(
@@ -37,11 +36,17 @@ export function chatReducer(
         ),
       };
     //
-    case UPDATE_MESSAGES:
+    case SET_MESSAGES:
       // Replaces all messages
       return {
         ...state,
         messages: [...action.payload],
+      };
+    case SET_CHATROOMS:
+      // Replaces all messages
+      return {
+        ...state,
+        chatRooms: [...action.payload],
       };
     case UPDATE_CHATROOM:
       // Replaces all messages

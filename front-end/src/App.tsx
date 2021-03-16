@@ -20,7 +20,7 @@ const App = () => {
             </section>
           </Route>
           <Route path="/">
-            <div></div>
+            <div>Please login</div>
           </Route>
         </Switch>
       </div>

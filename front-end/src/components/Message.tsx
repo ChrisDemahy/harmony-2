@@ -10,7 +10,7 @@ interface message {
   updated_at: string;
 }
 export const Message = (props: message) => {
-  const todo = useSelector((state) => state);
-  console.log(todo);
+  // const todo = useSelector((state) => state);
+  // console.log(todo);
   return <div></div>;
 };

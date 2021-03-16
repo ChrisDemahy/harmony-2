@@ -25,8 +25,9 @@ export interface ChatState {
 
 export const NEW_MESSAGE = "NEW_MESSAGE";
 export const DELETE_MESSAGE = "DELETE_MESSAGE";
-export const UPDATE_MESSAGES = "UPDATE_MESSAGES";
+export const SET_MESSAGES = "SET_MESSAGES";
 export const UPDATE_CHATROOM = "UPDATE_CHATROOM";
+export const SET_CHATROOMS = "SET_CHATROOMS";
 
 // user sends a message
 // (dispatched from thunk function or sockets callback)
@@ -42,8 +43,8 @@ interface DeleteMessageAction {
 }
 
 // User enters a new chatroom, replace all the messages
-interface UpdateMessagesAction {
-  type: typeof UPDATE_MESSAGES;
+interface SetMessagesAction {
+  type: typeof SET_MESSAGES;
   payload: Message[];
 }
 
@@ -53,9 +54,16 @@ interface UpdateChatroomAction {
   payload: ChatroomDetails;
 }
 
+// Load in all available chatrooms
+interface SetChatroomsAction {
+  type: typeof SET_CHATROOMS;
+  payload: ChatroomDetails[];
+}
+
 // Typescript union type to express all actions
 export type ChatActionTypes =
   | NewMessageAction
   | DeleteMessageAction
-  | UpdateMessagesAction
-  | UpdateChatroomAction;
+  | SetMessagesAction
+  | UpdateChatroomAction
+  | SetChatroomsAction;

@@ -5,9 +5,10 @@ import {
   NEW_MESSAGE,
   DELETE_MESSAGE,
   ChatActionTypes,
-  UPDATE_MESSAGES,
+  SET_MESSAGES,
   ChatroomDetails,
   UPDATE_CHATROOM,
+  SET_CHATROOMS,
 } from "./types";
 
 // TypeScript infers that this function is returning SendMessageAction
@@ -26,18 +27,26 @@ export function deleteMessage(oldMessage: Message): ChatActionTypes {
   };
 }
 
-// TypeScript infers that this function is returning UpdateMessagesAction
-export function updateMessages(newMessages: Message[]): ChatActionTypes {
+// TypeScript infers that this function is returning SetMessagesAction
+export function setMessages(newMessages: Message[]): ChatActionTypes {
   return {
-    type: UPDATE_MESSAGES,
+    type: SET_MESSAGES,
     payload: newMessages,
   };
 }
 
-// TypeScript infers that this function is returning UpdateMessagesAction
+// TypeScript infers that this function is returning SetMessagesAction
 export function updateChatroom(newChatroom: ChatroomDetails): ChatActionTypes {
   return {
     type: UPDATE_CHATROOM,
     payload: newChatroom,
+  };
+}
+
+// TypeScript infers that this function is returning SetMessagesAction
+export function setChatrooms(newChatrooms: ChatroomDetails[]): ChatActionTypes {
+  return {
+    type: SET_CHATROOMS,
+    payload: newChatrooms,
   };
 }

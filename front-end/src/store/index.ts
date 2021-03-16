@@ -8,11 +8,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { applyMiddleware } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { socketReducer } from "./socket/reducers";
+import { actionCableReducer } from "./actioncable/reducers";
 
 const rootReducer = combineReducers({
   system: systemReducer,
   chat: chatReducer,
   socket: socketReducer,
+  actionCable: actionCableReducer,
 });
 
 export const store = createStore(

@@ -1,17 +1,17 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../store";
-import { updateMessages } from "../store/chat/actions";
-import { thunkInitSocket } from "../thunk";
+import { setMessages } from "../store/chat/actions";
+import { thunkInitSocket } from "../store/socket/thunk";
+import { thunkGetChatrooms } from "../thunk";
 
 const MessageContainer = () => {
   const messages = useTypedSelector((state) => state.chat.messages);
-  console.log(messages);
 
   const dispatch = useDispatch();
 
   dispatch(thunkInitSocket());
-
+  dispatch(thunkGetChatrooms());
   return (
     <div className="container column is-10">
       <div className="section">
@@ -35,7 +35,7 @@ const MessageContainer = () => {
               <button
                 onClick={() =>
                   dispatch(
-                    updateMessages([
+                    setMessages([
                       { id: 3, content: "hello", user_id: 3, chatroom_id: 4 },
                     ])
                   )
