@@ -8,7 +8,6 @@ import {
   initSocket,
   socketClosed,
   socketError,
-  socketMessage,
   socketSuccess,
 } from "./actions";
 

@@ -1,6 +1,5 @@
 import {
   SocketActionTypes,
-  SocketState,
   SOCKET_CONNECTION_CLOSED,
   SOCKET_CONNECTION_ERROR,
   SOCKET_CONNECTION_INIT,
