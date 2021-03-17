@@ -8,15 +8,13 @@ import Sidebar from "./components/Sidebar";
 
 import { useDispatch, batch } from "react-redux";
 import { thunkInitSocket } from "./store/socket/thunk";
-import { thunkGetChatrooms } from "./thunk";
+import { thunkGetChatrooms, thunkSetup } from "./thunk";
 
 const App = () => {
   const dispatch = useDispatch();
+
   React.useEffect(() => {
-    batch(() => {
-      dispatch(thunkInitSocket());
-      dispatch(thunkGetChatrooms());
-    });
+    dispatch(thunkSetup());
   });
 
   return (

@@ -21,14 +21,16 @@ export const thunkInitSocket = (): ThunkAction<
   const socket = new WebSocket("ws://localhost:3000/cable");
 
   socket.onopen = (event) => {
-    console.log(`event: ${event}`);
+    console.log(`event:`);
+    console.dir(event);
     dispatch(socketSuccess());
   };
 
   socket.onmessage = (event) => {
     const serverResponse = JSON.parse(event.data);
     if (serverResponse.type !== "ping") {
-      console.log(`serverResponse: ${serverResponse}`);
+      console.log(`serverResponse:`);
+      console.dir(serverResponse);
       // dispatch(socketMessage(message: ))
     }
   };

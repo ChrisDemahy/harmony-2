@@ -49,10 +49,10 @@ export function chatReducer(
         chatRooms: [...action.payload],
       };
     case UPDATE_CHATROOM:
-      // Replaces all messages
+      // Updates current Chatroom
       return {
         ...state,
-        ...action.payload,
+        currentChatroom: action.payload,
       };
     default:
       return state;

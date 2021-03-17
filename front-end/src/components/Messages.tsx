@@ -9,7 +9,7 @@ const Messages = () => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(thunkGetMessages());
-  });
+  }, [dispatch]);
   const { messages } = useTypedSelector((state) => state.chat);
 
   return (
